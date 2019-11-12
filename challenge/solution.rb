@@ -44,7 +44,6 @@ rescue NameError
   end
 
   includer = lambda do |receiver|
-    puts '>>>> includer'
     if class_name_for(receiver) == class_name && !stop_recursion
       stop_recursion = true
       alias_and_override_method(receiver, method_name)
@@ -52,7 +51,6 @@ rescue NameError
   end
 
   inheriter = lambda do |receiver|
-    puts '>>>> inheriter'
     if receiver.name == class_name && receiver.superclass.instance_methods.include?(method_name.to_sym)
       alias_and_override_method(receiver.superclass, method_name)
     end
