@@ -4,14 +4,6 @@ class_name, method_type, method_name = matches[1..3]
 is_singleton = method_type == '.'
 count = 0
 
-def class_name_for(receiver)
-  (receiver.is_a?(Class) || receiver.is_a?(Module)) ? receiver.name : receiver.class.name
-end
-
-def singleton_method?(klass, method_name)
-  klass.singleton_methods(false).include?(method_name.to_sym)
-end
-
 def class_or_module?(unit)
   unit.is_a?(Module) || unit.is_a?(Class)
 end
